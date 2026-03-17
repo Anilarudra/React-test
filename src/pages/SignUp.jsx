@@ -40,14 +40,16 @@ function SignUp() {
             const data = await res.json();
             console.log(data);
 
-            if (res.status === 201) {
+            if (res.ok) {
+                alert("Registered Successfully ✅");
                 navigate("/login");
             } else {
                 setError("Failed to register. Please try again.");
             }
+
         } catch (err) {
             console.error(err);
-            setError("Network error. Is JSON Server running?");
+            setError("Network error. Please try again.");
         }
     };
 
