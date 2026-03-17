@@ -24,33 +24,17 @@ function SignUp() {
         }));
     };
 
-    const handleSignup = async (e) => {
+    const handleSignup = (e) => {
         e.preventDefault();
         setError("");
 
-        try {
-            const res = await fetch("https://69b910dbe69653ffe6a66948.mockapi.io/users", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(formData)
-            });
-
-            const data = await res.json();
-            console.log(data);
-
-            if (res.ok) {
-                alert("Registered Successfully ✅");
-                navigate("/login");
-            } else {
-                setError("Failed to register. Please try again.");
-            }
-
-        } catch (err) {
-            console.error(err);
-            setError("Network error. Please try again.");
+        // Basic validation
+        if (!formData.fullName || !formData.email || !formData.password) {
+            setError("Please fill in required fields.");
+            return;
         }
+
+        navigate("/profile");
     };
 
     return (

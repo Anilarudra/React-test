@@ -1,29 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
 function Profile() {
     const navigate = useNavigate();
-    const [user, setUser] = useState(null);
-
-    useEffect(() => {
-        // Check if user is logged in
-        const storedUser = localStorage.getItem("user");
-        if (storedUser) {
-            setUser(JSON.parse(storedUser));
-        } else {
-            // Redirect to login if not authenticated
-            navigate("/login");
-        }
-    }, [navigate]);
 
     const handleLogout = () => {
-        localStorage.removeItem("user");
-        navigate("/login");
+        navigate("/");
     };
-
-    if (!user) {
-        return <div>Loading...</div>; // Or return null while redirecting
-    }
 
     return (
         <div className="profile-page">
@@ -39,8 +22,8 @@ function Profile() {
                 />
 
                 <div>
-                    <h4>{user.fullName || "User"}</h4>
-                    <p>{user.email}</p>
+                    <h4>Marry Doe</h4>
+                    <p>Marry@gmail.com</p>
                 </div>
 
             </div>

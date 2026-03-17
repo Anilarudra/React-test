@@ -19,7 +19,7 @@ function Login() {
         }));
     };
 
-    const handleLogin = async (e) => {
+    const handleLogin = (e) => {
         e.preventDefault();
         setError("");
 
@@ -28,21 +28,7 @@ function Login() {
             return;
         }
 
-        try {
-            const response = await fetch(`https://69b910dbe69653ffe6a66948.mockapi.io/users?email=${formData.email}&password=${formData.password}`);
-            const users = await response.json();
-
-            if (users.length > 0) {
-                // User found, save to localStorage
-                localStorage.setItem("user", JSON.stringify(users[0]));
-                navigate("/profile");
-            } else {
-                setError("Invalid email or password.");
-            }
-        } catch (err) {
-            console.error("Login error:", err);
-            setError("Network error. Is JSON Server running?");
-        }
+        navigate("/profile");
     };
 
     return (
