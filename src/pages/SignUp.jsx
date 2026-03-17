@@ -29,7 +29,7 @@ function SignUp() {
         setError("");
 
         try {
-            const res = await fetch("http://localhost:4000/users", {
+            const res = await fetch("https://69b910dbe69653ffe6a66948.mockapi.io/users", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
